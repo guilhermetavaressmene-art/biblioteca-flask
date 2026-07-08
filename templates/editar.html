@@ -1,0 +1,26 @@
+<h1>Editar um Livro</h1>
+
+{% if erro %}
+    {{ erro }}
+{% endif %}
+
+{% if livro %}
+
+    <form method="POST" action="{{ url_for('editar_livro', id_livro=livro[0]) }}">
+
+        <p>Título:</p>
+        <input type="text" name="titulo" value="{{ livro[1] }}">
+
+        <p>Autor:</p>
+        <input type="text" name="autor" value="{{ livro[2] }}">
+
+        <p>Ano:</p>
+        <input type="number" name="ano" value="{{ livro[3] }}">
+
+        <button type="submit">Editar</button>
+
+    </form>
+
+    <a href="{{ url_for('livros') }}">Voltar</a>
+
+{% endif %}

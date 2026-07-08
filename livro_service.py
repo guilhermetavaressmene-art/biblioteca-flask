@@ -44,3 +44,24 @@ def remover_livro(titulo):
         raise ValueError('Título obrigatório.')
     
     livro_repository.remover_livro(titulo)
+
+def buscar_livro_id(id_livro):
+    livro_encontrado = livro_repository.buscar_livro(id_livro)
+
+    if livro_encontrado is None:
+        raise ValueError("ID inválido.")
+        
+    return livro_encontrado
+    
+
+def atualizar_livro(id_livro, titulo, autor, ano):
+    if not titulo.strip():
+        raise ValueError("Título obrigatório")
+        
+    if not autor.strip():
+        raise ValueError("Autor obrigatório.")
+        
+    if not ano.strip():
+        raise ValueError("Ano obrigatório.")
+        
+    livro_repository.atualizar_livro(id_livro, titulo, autor, ano)

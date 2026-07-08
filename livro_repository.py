@@ -42,3 +42,34 @@ def remover_livro(titulo):
     
     conexao.commit()
     conexao.close()
+
+def atualizar_livro(id_livro, titulo, autor, ano):
+    conexao = database.conectar()
+    cursor = conexao.cursor()
+
+    cursor.execute("""
+                   UPDATE livros
+                   SET titulo = ?, autor = ?, ano = ?
+                   WHERE id = ?
+                   """,
+                   (titulo, autor, ano, id_livro))
+    
+    conexao.commit()
+    conexao.close()
+
+def buscar_livro(id_livro):
+    conexao = database.conectar()
+    cursor = conexao.cursor()
+
+    cursor.execute("""
+                   SELECT *
+                   FROM livros
+                   WHERE id = ?
+                   """,
+                   (id_livro,))
+    
+    livro = cursor.fetchone()
+
+    conexao.close()
+    return livro
+

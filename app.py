@@ -62,5 +62,35 @@ def remover():
                     erro=str(erro)
                 )
             
+@app.route("/editar/<int:id_livro>", methods=['GET', 'POST'])
+def editar_livro(id_livro):
+    match request.method:
+        case 'GET':
+            try:
+                livro = livro_service.buscar_livro_id(id_livro)
+                return render_template("editar.html",
+                                    livro=livro)
+                
+            except ValueError as erro:
+                return render_template('editar.html',
+                                        erro=str(erro))
+    
+        case 'POST':
+            titulo = request.form['titulo']
+            autor = request.form['autor']
+            ano = request.form['ano']
+
+            try:
+                livro_service.atualizar_livro(id_livro, titulo, autor, ano)
+                return redirecionar()
+                
+            except ValueError as erro:
+                livro = livro_service.buscar_livro_id(id_livro)
+
+                return render_template('editar.html',
+                                        livro=livro,
+                                        erro=str(erro))
+
+            
 if __name__ == "__main__":
     app.run(debug=True)

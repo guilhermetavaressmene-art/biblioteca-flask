@@ -8,6 +8,7 @@
         <p>Autor: {{ livro[2] }}</p>
         <p>Ano: {{ livro[3] }}</p>
         <p>Disponibilidade: {{ livro[4] }}</p>
+        <a href="{{ url_for('editar_livro', id_livro=livro[0]) }}">Editar Livro</a>
         <hr>
 
     {% endfor %}
@@ -18,5 +19,5 @@
 
 {% endif %}
 
-<a href="{{ url_for('cadastrar_livro') }}">Cadastrar</a>
-<a href="{{ url_for('remover') }}">Remover</a>
+<a href="{{ url_for('cadastrar_livro') }}">Cadastrar Livro</a>
+<a href="{{ url_for('remover') }}">Remover Livro</a>
