@@ -1,0 +1,22 @@
+<h1>Livros</h1>
+
+{% if livros %}
+
+    {% for livro in livros %}
+
+        <p>Título: {{ livro[1] }}</p>
+        <p>Autor: {{ livro[2] }}</p>
+        <p>Ano: {{ livro[3] }}</p>
+        <p>Disponibilidade: {{ livro[4] }}</p>
+        <hr>
+
+    {% endfor %}
+
+{% else %}
+
+    <p>Sem livros.</p>
+
+{% endif %}
+
+<a href="{{ url_for('cadastrar_livro') }}">Cadastrar</a>
+<a href="{{ url_for('remover') }}">Remover</a>

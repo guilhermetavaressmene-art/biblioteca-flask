@@ -1,0 +1,21 @@
+<h1>Cadastrar Livros</h1>
+
+{% if erro %}
+    {{ erro }}
+{% endif %}
+
+<form method="POST" action="{{ url_for('cadastrar_livro') }}">
+    
+    <p>Título:</p>
+    <input type="text" name="titulo">
+
+    <p>Autor:</p>
+    <input type="text" name="autor">
+
+    <p>Ano:</p>
+    <input type="number" name="ano">
+
+    <button type="submit">Cadastrar</button>
+</form>
+
+<a href="{{ url_for('livros') }}">Voltar</a>
