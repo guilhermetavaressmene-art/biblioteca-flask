@@ -29,6 +29,9 @@ Construir uma aplicação de biblioteca usando arquitetura em camadas, separando
 - Validação de campos obrigatórios
 - PRG: Post/Redirect/Get após cadastro e remoção
 - Conversão de disponibilidade do banco para texto na camada de serviço
+- Editar livros
+- Rotas dinâmicas com id
+- Atualização de registros com UPDATE
 
 ## Como executar
 
