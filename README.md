@@ -15,28 +15,39 @@ Construir uma aplicação de biblioteca usando arquitetura em camadas, separando
 
 ## Arquitetura
 
-- `app.py`: rotas Flask e comunicação HTTP
-- `livro_service.py`: regras de negócio e validações
-- `livro_repository.py`: acesso ao banco de dados
-- `database.py`: conexão e criação da tabela
+- `app.py`: rotas Flask, requisições HTTP, redirecionamentos e renderização de templates
+- `livro_service.py`: regras de negócio, validações e formatação de dados
+- `livro_repository.py`: acesso ao banco de dados e execução de comandos SQL
+- `database.py`: conexão com SQLite e criação da tabela
 - `templates/`: páginas HTML com Jinja
 
 ## Funcionalidades
 
 - Listar livros
 - Cadastrar livros
-- Remover livros
-- Validação de campos obrigatórios
-- PRG: Post/Redirect/Get após cadastro e remoção
-- Conversão de disponibilidade do banco para texto na camada de serviço
 - Editar livros
-- Rotas dinâmicas com id
-- Atualização de registros com UPDATE
+- Remover livros por id
+- Validar campos obrigatórios
+- Validar título duplicado
+- Exibir disponibilidade em formato legível
+- Utilizar rotas dinâmicas com parâmetros
+- Aplicar PRG: Post/Redirect/Get após cadastro e edição
+
+## Conceitos praticados
+
+- Arquitetura em camadas
+- Separação de responsabilidades
+- Rotas GET e POST
+- Formulários HTML integrados ao Flask
+- Templates com Jinja
+- Operações SQL: SELECT, INSERT, UPDATE e DELETE
+- Tratamento de erros com `raise` e `try/except`
+- Uso de `url_for` com parâmetros
+- Versionamento com Git e GitHub
 
 ## Como executar
 
 ```bash
 pip install flask
 python app.py
-
 Acesse: http://127.0.0.1:5000
