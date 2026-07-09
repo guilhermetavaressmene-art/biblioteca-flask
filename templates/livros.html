@@ -1,14 +1,20 @@
 <h1>Livros</h1>
 
+{% if erro %}
+    {{ erro }}
+{% endif %}
+
 {% if livros %}
 
     {% for livro in livros %}
 
+        <p>ID: {{ livro[0] }}</p>
         <p>Título: {{ livro[1] }}</p>
         <p>Autor: {{ livro[2] }}</p>
         <p>Ano: {{ livro[3] }}</p>
         <p>Disponibilidade: {{ livro[4] }}</p>
         <a href="{{ url_for('editar_livro', id_livro=livro[0]) }}">Editar Livro</a>
+        <a href="{{ url_for('remover_livro', id_livro=livro[0]) }}">Remover Livro</a>
         <hr>
 
     {% endfor %}
@@ -20,4 +26,3 @@
 {% endif %}
 
 <a href="{{ url_for('cadastrar_livro') }}">Cadastrar Livro</a>
-<a href="{{ url_for('remover') }}">Remover Livro</a>

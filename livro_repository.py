@@ -30,15 +30,15 @@ def listar_livros():
     conexao.close()
     return livros
 
-def remover_livro(titulo):
+def remover_livro(id_livro):
     conexao = database.conectar()
     cursor = conexao.cursor()
 
     cursor.execute("""
                    DELETE FROM livros
-                   WHERE titulo = ?
+                   WHERE id = ?
                    """,
-                   (titulo,))
+                   (id_livro,))
     
     conexao.commit()
     conexao.close()
@@ -72,4 +72,3 @@ def buscar_livro(id_livro):
 
     conexao.close()
     return livro
-

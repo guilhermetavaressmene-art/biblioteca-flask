@@ -10,6 +10,14 @@ def cadastrar_livros(titulo, autor, ano):
     if not ano.strip():
         raise ValueError('Ano obrigatório.')
     
+    titulo_normalizado = titulo.strip().lower()
+
+    verificar = listar_livros()
+    
+    for categoria in verificar:
+        if categoria[1] == titulo_normalizado:
+            raise ValueError("Título ja existente.")
+    
     livro_repository.inserir_livros(titulo, autor, ano)
 
 def listar_livros():
@@ -39,11 +47,8 @@ def listar_livros():
 
     return livros_formatados
 
-def remover_livro(titulo):
-    if not titulo.strip():
-        raise ValueError('Título obrigatório.')
-    
-    livro_repository.remover_livro(titulo)
+def remover_livro(id_livro):    
+    livro_repository.remover_livro(id_livro)
 
 def buscar_livro_id(id_livro):
     livro_encontrado = livro_repository.buscar_livro(id_livro)

@@ -43,24 +43,20 @@ def cadastrar_livro():
                     erro=str(erro)
                 )
     
-@app.route('/remover', methods=['GET', 'POST'])
-def remover():
-    match request.method:
-        case 'GET':
-            return render_template('remover.html')
+@app.route('/remover/<int:id_livro>')
+def remover_livro(id_livro):
+    try:
+        livro_service.remover_livro(id_livro)
+        return redirecionar()
+
+    except ValueError as erro:
+        livros = livro_service.listar_livros()
         
-        case 'POST':    
-            livro_removido = request.form['removido']
-
-            try:
-                livro_service.remover_livro(livro_removido)
-                return redirecionar()
-
-            except ValueError as erro:
-                return render_template(
-                    'remover.html',
-                    erro=str(erro)
-                )
+        return render_template(
+            'livros.html',
+            livros=livros,
+            erro=str(erro))
+    
             
 @app.route("/editar/<int:id_livro>", methods=['GET', 'POST'])
 def editar_livro(id_livro):
@@ -91,6 +87,5 @@ def editar_livro(id_livro):
                                         livro=livro,
                                         erro=str(erro))
 
-            
 if __name__ == "__main__":
     app.run(debug=True)
